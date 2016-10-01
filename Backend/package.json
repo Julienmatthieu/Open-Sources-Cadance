@@ -1,0 +1,10 @@
+{
+  "name": "Backend_Board",
+  "main": "app.js",
+  "dependencies": {
+    "net-ping": "*",
+    "socket.io": "*",
+    "forever": "*"
+  },
+  "author": "Tristan"
+}

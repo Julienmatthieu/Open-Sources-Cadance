@@ -1,0 +1,20 @@
+/* Chrome, Safari, Opera */
+@-webkit-keyframes icn_danger {
+     0%   { color: rgba(243, 156, 18, 1.0); }
+    50% { color: rgba(230, 126, 34, 1.0); box-shadow: 0px 0px 12px rgba(243, 156, 18, 0.8); margin-top: 10%; }
+    100%   { color: rgba(243, 156, 18, 1.0); }
+}
+
+/* Standard syntax */
+@keyframes icn_danger {
+    0%   { color: rgba(230, 126, 34, 1.0); }
+    50% { color: rgba(243, 156, 18, 1.0); box-shadow: 0px 0px 12px rgba(243, 156, 18, 0.8); margin-top: 23%; }
+    100%   { color: rgba(230, 126, 34, 1.0); }
+}
+
+/* Standard syntax */
+@keyframes basic-color1 {
+    0%   { color: rgba(231, 76, 60,1.0); transform: rotate(0deg);}
+    50% { rgba(211, 84, 0,1.0); }
+    100%   { color: rgba(231, 76, 60,1.0); transform: rotate(360deg);}
+}

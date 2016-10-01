@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="UTF-8">
+      <link rel='shortcut icon' type='image/x-icon' href='img/favicon.ico' />
+      <link rel="stylesheet" href="css/Font-Awesome/css/font-awesome.min.css">
+      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="css/annimation.css">
+
+        <script src="http://127.0.0.1:8080/socket.io/socket.io.js"></script> 
+
+        <script src="js/jquery-1.11.3.min.js"></script>
+        <script src="js/socket.js"></script>
+        <script src="js/script.js"></script>
+    </head>
+<body>
+  <span id="load_socketio_lib"> <!-- Ne pas supprimer --> </span>
+    <audio id="SpeedSound" src="./beep.wav" autostart="false" ></audio> 
+    <nav>
+        <div onClick="showPopup('shut-down-up', 'fa fa-power-off');"><i class="fa fa-power-off" id="icn_link_backend"></i></div>
+        <div></div>
+        <div><i class="fa fa-mobile" id="icn_link_mobile"></i></div>  
+        <div onClick="showPopup('seting-up', 'fa fa-tachometer'); getSpeedAlert()"><i class="fa fa-tachometer"></i></div>
+        <div onClick="showPopup('cam-up', 'fa fa-play-circle-o');"><i class="fa fa-play-circle-o"></i></div>
+    </nav>
+      <section id="main">
+        <span id="demo-span">  
+          <a style="font-size: 1.2em">DEMO - CADANCE </a></br>
+          <i class="fa fa-minus-circle demo-changeSpeed" style="font-size: 2em" onclick="DEMOchangingSpeed('-');"></i> 
+          <a id="demo-speed" style="font-size: 2em; color:red" onclick="DEMOuseGPS()" >201</a> 
+          <i class="fa fa-plus-circle demo-changeSpeed"style="font-size: 2em" onclick="DEMOchangingSpeed('+');"></i> 
+        </span>
+
+        <span id="back-alert" style="background-image: radial-gradient(#0a0000,#0a0000,red, red);position: absolute;height: 100%; width: 100%; opacity: 0; z-index: 1;LEFT: 0%;top: 0%;"></span>
+        <div class="signes" id="speed_zone">
+          <span class="speed"><p id="live_speed" style="z-index: 10;">Chargement..</p> <br>km/h</span>
+        </div>
+        <div class="signes" id="danger_zone"><i class="fa fa-warning icn_danger" id="icnWarning"></i></div>
+        <article id="pushdanger">
+            <section onClick="sendAlert('1');" style="float: left; width: 49%; border-right: 1px solid white; "><i class="fa fa-warning fa-2x"></i> <br>Danger</section>
+            <section onClick="sendAlert('2')" style='float: left; width: 49%;'><i class="fa fa-ambulance fa-2x"></i> <br>Accident</section>
+        </article>
+
+        <aside id="battery">
+        <i class="fa fa-battery-2"></i>
+              49%
+        </aside>
+     </section>
+      
+    <article id="shut-down-up" class="pop-up">
+        <h2>Arrêt en cours</h2>
+        <i class="fa fa-circle-o-notch fa-2x animation-color1"></i>
+    </article>
+
+    <article id="cam-up" class="pop-up" style="height: 60%">
+      <h2>DashCam</h2>
+      <div id="camPanel">
+        <div id="arrowsPanel">
+          <i class="fa fa-4x fa-arrow-up" aria-hidden="true" style="margin-top: 40%;margin-bottom: 30%;" onClick="camArrow(-1)"></i> 
+          <i class="fa fa-4x fa-arrow-down" aria-hidden="true" onClick="camArrow(1)" style="width:100%;margin-bottom: 30%"></i>
+          <i class="fa fa-3x fa-trash-o" aria-hidden="true" Onclick="allowDel()"></i>
+        </div>
+        <div id="videosPanel">
+        </div>
+      </div>
+    </article>
+
+    <article id="seting-up" class="pop-up">
+      <h2>Alèrte de vitesse</h2>
+      <div>
+        <div id="listSpeedAlert" style="margin-left:8.5%; padding-top:3%">
+        </div>
+      </div>
+    </article>
+      
+    <script>
+      var load_nb_inc = 1;
+          
+      function loadCss(src) { load('css', src); }
+      function loadJs(src) { load('js', src); }
+      function load(type, src) { setTimeout("auto_load_file('" + type + "', '" + src + "');", (load_nb_inc++) * 350); }
+        
+      function auto_load_file(type, src)
+      {
+        var lien = (type == 'css') ? document.createElement('link') : document.createElement('script');
+        if (type == "css")
+        {
+          lien.href = src;
+          lien.rel = "stylesheet";
+          lien.type = "text/css";
+        }
+        else if (type == "js")
+          lien.src = src;
+        document.getElementsByTagName("head")[0].appendChild(lien);
+      }
+    </script>        
+   <!-- <script src="js/jquery-1.11.3.min"></script> -->
+
+</body>
+<html/>
